@@ -10,12 +10,11 @@ import java.util.UUID;
 
 import com.google.protobuf.ByteString;
 
-import filetransfer.FileTransferServiceGrpc.FileTransferService;
 import filetransfer.Filetransfer.RequestData;
 import filetransfer.Filetransfer.ResponseData;
 import io.grpc.stub.StreamObserver;
 
-public class FileTransferServiceImpl implements FileTransferService {
+public class FileTransferServiceImpl extends FileTransferServiceGrpc.FileTransferServiceImplBase {
 
 	// 将byte数组写入文件
 	public void createFile(String filePath, byte[] content) {

@@ -2,7 +2,7 @@ syntax = "proto3";
 package filetransfer;
 service FileTransferService {
 
-  //服务器端流式rpc
+  //serverside rpc
   rpc ServerSideStreamFun(RequestData) returns (stream ResponseData){}
  
 }

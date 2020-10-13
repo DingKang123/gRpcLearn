@@ -2,7 +2,6 @@ package two.way.stream;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Iterator;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -10,14 +9,12 @@ import io.grpc.stub.StreamObserver;
 import stream.Stream.RequestData;
 import stream.Stream.ResponseData;
 import stream.StreamServiceGrpc;
-import stream.StreamServiceGrpc.StreamServiceBlockingStub;
-import stream.StreamServiceGrpc.StreamServiceStub;
 
 public class Client {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException {
 		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8883).usePlaintext(true).build();
-		StreamServiceStub asyncStub = StreamServiceGrpc.newStub(channel);
+		StreamServiceGrpc.StreamServiceStub asyncStub = StreamServiceGrpc.newStub(channel);
 
 		StreamObserver<ResponseData> responseData = new StreamObserver<ResponseData>() {
 			@Override
@@ -35,7 +32,7 @@ public class Client {
 			@Override
 			public void onCompleted() {
 				// TODO Auto-generated method stub
-				// 关闭channel
+				//
 				channel.shutdown();
 			}
 		};
@@ -43,11 +40,11 @@ public class Client {
 		StreamObserver<RequestData> requestData = asyncStub.twoWayStreamFun(responseData);
 		long start = System.currentTimeMillis();
 		for (int i = 0; i < 10; i++) {
-			requestData.onNext(RequestData.newBuilder().setText("你好" + i).build());
+			requestData.onNext(RequestData.newBuilder().setText("hello" + i).build());
 		}
 		requestData.onCompleted();
 		System.out.println(System.currentTimeMillis() - start + " MS");
-		// 由于是异步获得结果，所以sleep 10秒
+		//
 		Thread.sleep(10000);
 	}
 }

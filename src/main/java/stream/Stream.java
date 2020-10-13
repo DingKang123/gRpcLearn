@@ -54,6 +54,9 @@ public final class Stream {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -65,17 +68,17 @@ public final class Stream {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
               text_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
               break;
             }
           }
@@ -95,6 +98,7 @@ public final class Stream {
       return stream.Stream.internal_static_stream_RequestData_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return stream.Stream.internal_static_stream_RequestData_fieldAccessorTable
@@ -137,6 +141,7 @@ public final class Stream {
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -146,6 +151,7 @@ public final class Stream {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getTextBytes().isEmpty()) {
@@ -154,6 +160,7 @@ public final class Stream {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -177,11 +184,10 @@ public final class Stream {
       }
       stream.Stream.RequestData other = (stream.Stream.RequestData) obj;
 
-      boolean result = true;
-      result = result && getText()
-          .equals(other.getText());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getText()
+          .equals(other.getText())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -268,6 +274,7 @@ public final class Stream {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -275,6 +282,7 @@ public final class Stream {
     public static Builder newBuilder(stream.Stream.RequestData prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -298,6 +306,7 @@ public final class Stream {
         return stream.Stream.internal_static_stream_RequestData_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return stream.Stream.internal_static_stream_RequestData_fieldAccessorTable
@@ -320,6 +329,7 @@ public final class Stream {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         text_ = "";
@@ -327,15 +337,18 @@ public final class Stream {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return stream.Stream.internal_static_stream_RequestData_descriptor;
       }
 
+      @java.lang.Override
       public stream.Stream.RequestData getDefaultInstanceForType() {
         return stream.Stream.RequestData.getDefaultInstance();
       }
 
+      @java.lang.Override
       public stream.Stream.RequestData build() {
         stream.Stream.RequestData result = buildPartial();
         if (!result.isInitialized()) {
@@ -344,6 +357,7 @@ public final class Stream {
         return result;
       }
 
+      @java.lang.Override
       public stream.Stream.RequestData buildPartial() {
         stream.Stream.RequestData result = new stream.Stream.RequestData(this);
         result.text_ = text_;
@@ -351,32 +365,39 @@ public final class Stream {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof stream.Stream.RequestData) {
           return mergeFrom((stream.Stream.RequestData)other);
@@ -397,10 +418,12 @@ public final class Stream {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -487,11 +510,13 @@ public final class Stream {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -513,11 +538,12 @@ public final class Stream {
 
     private static final com.google.protobuf.Parser<RequestData>
         PARSER = new com.google.protobuf.AbstractParser<RequestData>() {
+      @java.lang.Override
       public RequestData parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new RequestData(input, extensionRegistry);
+        return new RequestData(input, extensionRegistry);
       }
     };
 
@@ -530,6 +556,7 @@ public final class Stream {
       return PARSER;
     }
 
+    @java.lang.Override
     public stream.Stream.RequestData getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -576,6 +603,9 @@ public final class Stream {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -587,17 +617,17 @@ public final class Stream {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
               text_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
               break;
             }
           }
@@ -617,6 +647,7 @@ public final class Stream {
       return stream.Stream.internal_static_stream_ResponseData_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return stream.Stream.internal_static_stream_ResponseData_fieldAccessorTable
@@ -659,6 +690,7 @@ public final class Stream {
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -668,6 +700,7 @@ public final class Stream {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getTextBytes().isEmpty()) {
@@ -676,6 +709,7 @@ public final class Stream {
       unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -699,11 +733,10 @@ public final class Stream {
       }
       stream.Stream.ResponseData other = (stream.Stream.ResponseData) obj;
 
-      boolean result = true;
-      result = result && getText()
-          .equals(other.getText());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getText()
+          .equals(other.getText())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -790,6 +823,7 @@ public final class Stream {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -797,6 +831,7 @@ public final class Stream {
     public static Builder newBuilder(stream.Stream.ResponseData prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -820,6 +855,7 @@ public final class Stream {
         return stream.Stream.internal_static_stream_ResponseData_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return stream.Stream.internal_static_stream_ResponseData_fieldAccessorTable
@@ -842,6 +878,7 @@ public final class Stream {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         text_ = "";
@@ -849,15 +886,18 @@ public final class Stream {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return stream.Stream.internal_static_stream_ResponseData_descriptor;
       }
 
+      @java.lang.Override
       public stream.Stream.ResponseData getDefaultInstanceForType() {
         return stream.Stream.ResponseData.getDefaultInstance();
       }
 
+      @java.lang.Override
       public stream.Stream.ResponseData build() {
         stream.Stream.ResponseData result = buildPartial();
         if (!result.isInitialized()) {
@@ -866,6 +906,7 @@ public final class Stream {
         return result;
       }
 
+      @java.lang.Override
       public stream.Stream.ResponseData buildPartial() {
         stream.Stream.ResponseData result = new stream.Stream.ResponseData(this);
         result.text_ = text_;
@@ -873,32 +914,39 @@ public final class Stream {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof stream.Stream.ResponseData) {
           return mergeFrom((stream.Stream.ResponseData)other);
@@ -919,10 +967,12 @@ public final class Stream {
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1009,11 +1059,13 @@ public final class Stream {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -1035,11 +1087,12 @@ public final class Stream {
 
     private static final com.google.protobuf.Parser<ResponseData>
         PARSER = new com.google.protobuf.AbstractParser<ResponseData>() {
+      @java.lang.Override
       public ResponseData parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new ResponseData(input, extensionRegistry);
+        return new ResponseData(input, extensionRegistry);
       }
     };
 
@@ -1052,6 +1105,7 @@ public final class Stream {
       return PARSER;
     }
 
+    @java.lang.Override
     public stream.Stream.ResponseData getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }

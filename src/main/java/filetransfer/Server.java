@@ -2,16 +2,14 @@ package filetransfer;
 
 import java.io.IOException;
 
-import filetransfer.FileTransferServiceGrpc.FileTransferService;
-
 public class Server {
 	private static int port = 8883;
 	private static io.grpc.Server server;
 
 	public void run() {
-		FileTransferService fileTransferService = new FileTransferServiceImpl();
+		FileTransferServiceGrpc.FileTransferServiceImplBase fileTransferService = new FileTransferServiceImpl();
 		server = io.grpc.ServerBuilder.forPort(port)
-				.addService(FileTransferServiceGrpc.bindService(fileTransferService)).build();
+				.addService(fileTransferService.bindService()).build();
 		try {
 			server.start();
 			System.out.println("Server start success on port:" + port);

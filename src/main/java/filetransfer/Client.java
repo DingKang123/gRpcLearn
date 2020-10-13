@@ -1,14 +1,10 @@
 package filetransfer;
 
-import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
 import java.util.Iterator;
 
-import filetransfer.FileTransferServiceGrpc.FileTransferServiceBlockingStub;
 import filetransfer.Filetransfer.RequestData;
 import filetransfer.Filetransfer.ResponseData;
 import io.grpc.ManagedChannel;
@@ -17,9 +13,9 @@ import io.grpc.ManagedChannelBuilder;
 public class Client {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-		RequestData requestData = RequestData.newBuilder().setText("·þÎñÆô¶¯").build();
+		RequestData requestData = RequestData.newBuilder().setText("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½").build();
 		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8883).usePlaintext(true).build();
-		FileTransferServiceBlockingStub stub = FileTransferServiceGrpc.newBlockingStub(channel);
+		FileTransferServiceGrpc.FileTransferServiceBlockingStub stub = FileTransferServiceGrpc.newBlockingStub(channel);
 
 		Iterator<ResponseData> it = stub.serverSideStreamFun(requestData);
 		long start = System.currentTimeMillis();
@@ -35,7 +31,7 @@ public class Client {
 
 	}
 
-	// ½«byteÊý×éÐ´ÈëÎÄ¼þ
+	// ï¿½ï¿½byteï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Ä¼ï¿½
 	public static void createFile(String filePath, byte[] content) {
 		FileOutputStream fos = null;
 		try {

@@ -9,14 +9,13 @@ import io.grpc.ManagedChannelBuilder;
 import stream.Stream.RequestData;
 import stream.Stream.ResponseData;
 import stream.StreamServiceGrpc;
-import stream.StreamServiceGrpc.StreamServiceBlockingStub;
 
 public class Client {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		RequestData requestData = RequestData.newBuilder().setText("hello world").build();
 		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8883).usePlaintext(true).build();
-		StreamServiceBlockingStub stub = StreamServiceGrpc.newBlockingStub(channel);
+		StreamServiceGrpc.StreamServiceBlockingStub stub = StreamServiceGrpc.newBlockingStub(channel);
 
 		Iterator<ResponseData> it = stub.serverSideStreamFun(requestData);
 		long start = System.currentTimeMillis();

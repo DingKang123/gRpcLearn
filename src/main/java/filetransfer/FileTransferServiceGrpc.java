@@ -1,67 +1,118 @@
 package filetransfer;
 
-import static io.grpc.stub.ClientCalls.asyncUnaryCall;
-import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ClientCalls.blockingUnaryCall;
-import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
-import static io.grpc.stub.ClientCalls.futureUnaryCall;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
-import static io.grpc.stub.ServerCalls.asyncUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncUnaryCall;
+import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
+import static io.grpc.stub.ClientCalls.blockingUnaryCall;
+import static io.grpc.stub.ClientCalls.futureUnaryCall;
 import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncUnaryCall;
+import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
-@javax.annotation.Generated("by gRPC proto compiler")
-public class FileTransferServiceGrpc {
+/**
+ */
+@javax.annotation.Generated(
+    value = "by gRPC proto compiler (version 1.9.1)",
+    comments = "Source: filetransfer.proto")
+public final class FileTransferServiceGrpc {
 
   private FileTransferServiceGrpc() {}
 
   public static final String SERVICE_NAME = "filetransfer.FileTransferService";
 
   // Static method descriptors that strictly reflect the proto.
-  @io.grpc.ExperimentalApi(value = "")
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  @java.lang.Deprecated // Use {@link #getServerSideStreamFunMethod()} instead. 
   public static final io.grpc.MethodDescriptor<filetransfer.Filetransfer.RequestData,
-      filetransfer.Filetransfer.ResponseData> METHOD_SERVER_SIDE_STREAM_FUN =
-      io.grpc.MethodDescriptor.create(
-          io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING,
-          generateFullMethodName(
-              "filetransfer.FileTransferService", "ServerSideStreamFun"),
-          io.grpc.protobuf.ProtoUtils.marshaller(filetransfer.Filetransfer.RequestData.getDefaultInstance()),
-          io.grpc.protobuf.ProtoUtils.marshaller(filetransfer.Filetransfer.ResponseData.getDefaultInstance()));
+      filetransfer.Filetransfer.ResponseData> METHOD_SERVER_SIDE_STREAM_FUN = getServerSideStreamFunMethod();
 
+  private static volatile io.grpc.MethodDescriptor<filetransfer.Filetransfer.RequestData,
+      filetransfer.Filetransfer.ResponseData> getServerSideStreamFunMethod;
+
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static io.grpc.MethodDescriptor<filetransfer.Filetransfer.RequestData,
+      filetransfer.Filetransfer.ResponseData> getServerSideStreamFunMethod() {
+    io.grpc.MethodDescriptor<filetransfer.Filetransfer.RequestData, filetransfer.Filetransfer.ResponseData> getServerSideStreamFunMethod;
+    if ((getServerSideStreamFunMethod = FileTransferServiceGrpc.getServerSideStreamFunMethod) == null) {
+      synchronized (FileTransferServiceGrpc.class) {
+        if ((getServerSideStreamFunMethod = FileTransferServiceGrpc.getServerSideStreamFunMethod) == null) {
+          FileTransferServiceGrpc.getServerSideStreamFunMethod = getServerSideStreamFunMethod = 
+              io.grpc.MethodDescriptor.<filetransfer.Filetransfer.RequestData, filetransfer.Filetransfer.ResponseData>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "filetransfer.FileTransferService", "ServerSideStreamFun"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  filetransfer.Filetransfer.RequestData.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  filetransfer.Filetransfer.ResponseData.getDefaultInstance()))
+                  .setSchemaDescriptor(new FileTransferServiceMethodDescriptorSupplier("ServerSideStreamFun"))
+                  .build();
+          }
+        }
+     }
+     return getServerSideStreamFunMethod;
+  }
+
+  /**
+   * Creates a new async stub that supports all call types for the service
+   */
   public static FileTransferServiceStub newStub(io.grpc.Channel channel) {
     return new FileTransferServiceStub(channel);
   }
 
+  /**
+   * Creates a new blocking-style stub that supports unary and streaming output calls on the service
+   */
   public static FileTransferServiceBlockingStub newBlockingStub(
       io.grpc.Channel channel) {
     return new FileTransferServiceBlockingStub(channel);
   }
 
+  /**
+   * Creates a new ListenableFuture-style stub that supports unary calls on the service
+   */
   public static FileTransferServiceFutureStub newFutureStub(
       io.grpc.Channel channel) {
     return new FileTransferServiceFutureStub(channel);
   }
 
-  public static interface FileTransferService {
+  /**
+   */
+  public static abstract class FileTransferServiceImplBase implements io.grpc.BindableService {
 
+    /**
+     * <pre>
+     *serverside rpc
+     * </pre>
+     */
     public void serverSideStreamFun(filetransfer.Filetransfer.RequestData request,
-        io.grpc.stub.StreamObserver<filetransfer.Filetransfer.ResponseData> responseObserver);
+        io.grpc.stub.StreamObserver<filetransfer.Filetransfer.ResponseData> responseObserver) {
+      asyncUnimplementedUnaryCall(getServerSideStreamFunMethod(), responseObserver);
+    }
+
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getServerSideStreamFunMethod(),
+            asyncServerStreamingCall(
+              new MethodHandlers<
+                filetransfer.Filetransfer.RequestData,
+                filetransfer.Filetransfer.ResponseData>(
+                  this, METHODID_SERVER_SIDE_STREAM_FUN)))
+          .build();
+    }
   }
 
-  public static interface FileTransferServiceBlockingClient {
-
-    public java.util.Iterator<filetransfer.Filetransfer.ResponseData> serverSideStreamFun(
-        filetransfer.Filetransfer.RequestData request);
-  }
-
-  public static interface FileTransferServiceFutureClient {
-  }
-
-  public static class FileTransferServiceStub extends io.grpc.stub.AbstractStub<FileTransferServiceStub>
-      implements FileTransferService {
+  /**
+   */
+  public static final class FileTransferServiceStub extends io.grpc.stub.AbstractStub<FileTransferServiceStub> {
     private FileTransferServiceStub(io.grpc.Channel channel) {
       super(channel);
     }
@@ -77,16 +128,21 @@ public class FileTransferServiceGrpc {
       return new FileTransferServiceStub(channel, callOptions);
     }
 
-    @java.lang.Override
+    /**
+     * <pre>
+     *serverside rpc
+     * </pre>
+     */
     public void serverSideStreamFun(filetransfer.Filetransfer.RequestData request,
         io.grpc.stub.StreamObserver<filetransfer.Filetransfer.ResponseData> responseObserver) {
       asyncServerStreamingCall(
-          getChannel().newCall(METHOD_SERVER_SIDE_STREAM_FUN, getCallOptions()), request, responseObserver);
+          getChannel().newCall(getServerSideStreamFunMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
-  public static class FileTransferServiceBlockingStub extends io.grpc.stub.AbstractStub<FileTransferServiceBlockingStub>
-      implements FileTransferServiceBlockingClient {
+  /**
+   */
+  public static final class FileTransferServiceBlockingStub extends io.grpc.stub.AbstractStub<FileTransferServiceBlockingStub> {
     private FileTransferServiceBlockingStub(io.grpc.Channel channel) {
       super(channel);
     }
@@ -102,16 +158,21 @@ public class FileTransferServiceGrpc {
       return new FileTransferServiceBlockingStub(channel, callOptions);
     }
 
-    @java.lang.Override
+    /**
+     * <pre>
+     *serverside rpc
+     * </pre>
+     */
     public java.util.Iterator<filetransfer.Filetransfer.ResponseData> serverSideStreamFun(
         filetransfer.Filetransfer.RequestData request) {
       return blockingServerStreamingCall(
-          getChannel(), METHOD_SERVER_SIDE_STREAM_FUN, getCallOptions(), request);
+          getChannel(), getServerSideStreamFunMethod(), getCallOptions(), request);
     }
   }
 
-  public static class FileTransferServiceFutureStub extends io.grpc.stub.AbstractStub<FileTransferServiceFutureStub>
-      implements FileTransferServiceFutureClient {
+  /**
+   */
+  public static final class FileTransferServiceFutureStub extends io.grpc.stub.AbstractStub<FileTransferServiceFutureStub> {
     private FileTransferServiceFutureStub(io.grpc.Channel channel) {
       super(channel);
     }
@@ -130,19 +191,20 @@ public class FileTransferServiceGrpc {
 
   private static final int METHODID_SERVER_SIDE_STREAM_FUN = 0;
 
-  private static class MethodHandlers<Req, Resp> implements
+  private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final FileTransferService serviceImpl;
+    private final FileTransferServiceImplBase serviceImpl;
     private final int methodId;
 
-    public MethodHandlers(FileTransferService serviceImpl, int methodId) {
+    MethodHandlers(FileTransferServiceImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
 
+    @java.lang.Override
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
@@ -155,6 +217,7 @@ public class FileTransferServiceGrpc {
       }
     }
 
+    @java.lang.Override
     @java.lang.SuppressWarnings("unchecked")
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
@@ -165,16 +228,56 @@ public class FileTransferServiceGrpc {
     }
   }
 
-  public static io.grpc.ServerServiceDefinition bindService(
-      final FileTransferService serviceImpl) {
-    return io.grpc.ServerServiceDefinition.builder(SERVICE_NAME)
-        .addMethod(
-          METHOD_SERVER_SIDE_STREAM_FUN,
-          asyncServerStreamingCall(
-            new MethodHandlers<
-              filetransfer.Filetransfer.RequestData,
-              filetransfer.Filetransfer.ResponseData>(
-                serviceImpl, METHODID_SERVER_SIDE_STREAM_FUN)))
-        .build();
+  private static abstract class FileTransferServiceBaseDescriptorSupplier
+      implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
+    FileTransferServiceBaseDescriptorSupplier() {}
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
+      return filetransfer.Filetransfer.getDescriptor();
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
+      return getFileDescriptor().findServiceByName("FileTransferService");
+    }
+  }
+
+  private static final class FileTransferServiceFileDescriptorSupplier
+      extends FileTransferServiceBaseDescriptorSupplier {
+    FileTransferServiceFileDescriptorSupplier() {}
+  }
+
+  private static final class FileTransferServiceMethodDescriptorSupplier
+      extends FileTransferServiceBaseDescriptorSupplier
+      implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
+    private final String methodName;
+
+    FileTransferServiceMethodDescriptorSupplier(String methodName) {
+      this.methodName = methodName;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
+      return getServiceDescriptor().findMethodByName(methodName);
+    }
+  }
+
+  private static volatile io.grpc.ServiceDescriptor serviceDescriptor;
+
+  public static io.grpc.ServiceDescriptor getServiceDescriptor() {
+    io.grpc.ServiceDescriptor result = serviceDescriptor;
+    if (result == null) {
+      synchronized (FileTransferServiceGrpc.class) {
+        result = serviceDescriptor;
+        if (result == null) {
+          serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
+              .setSchemaDescriptor(new FileTransferServiceFileDescriptorSupplier())
+              .addMethod(getServerSideStreamFunMethod())
+              .build();
+        }
+      }
+    }
+    return result;
   }
 }

@@ -3,14 +3,14 @@ package stream;
 import io.grpc.stub.StreamObserver;
 import stream.Stream.RequestData;
 import stream.Stream.ResponseData;
-import stream.StreamServiceGrpc.StreamService;
+import stream.StreamServiceGrpc;
 
-public class ServiceImpl implements StreamService {
+public class ServiceImpl extends StreamServiceGrpc.StreamServiceImplBase {
 
 	@Override
 	public void simpleFun(RequestData request, StreamObserver<ResponseData> responseObserver) {
 		// TODO Auto-generated method stub
-		System.out.println("请求参数：" + request.getText());
+		System.out.println("simpleFun request" + request.getText());
 		responseObserver.onNext(ResponseData.newBuilder().setText("hello gRPC").build());
 		responseObserver.onCompleted();
 	}
@@ -18,9 +18,9 @@ public class ServiceImpl implements StreamService {
 	@Override
 	public void serverSideStreamFun(RequestData request, StreamObserver<ResponseData> responseObserver) {
 		// TODO Auto-generated method stub
-		System.out.println("请求参数：" + request.getText());
+		System.out.println("serverSideStreamFun request" + request.getText());
 		for (int i = 0; i < 10; i++) {
-			responseObserver.onNext(ResponseData.newBuilder().setText("你好" + i).build());
+			responseObserver.onNext(ResponseData.newBuilder().setText("hello_" + i).build());
 		}
 		responseObserver.onCompleted();
 	}
@@ -34,7 +34,7 @@ public class ServiceImpl implements StreamService {
 			@Override
 			public void onNext(RequestData value) {
 				// TODO Auto-generated method stub
-				System.out.println("请求参数：" + value.getText());
+				System.out.println("clientSideStreamFun onNext" + value.getText());
 
 			}
 
@@ -47,7 +47,7 @@ public class ServiceImpl implements StreamService {
 			@Override
 			public void onCompleted() {
 				// TODO Auto-generated method stub
-				builder.setText("数据接收完成");
+				builder.setText("clientSideStreamFun onCompleted");
 				responseObserver.onNext(builder.build());
 				responseObserver.onCompleted();
 			}
@@ -63,8 +63,8 @@ public class ServiceImpl implements StreamService {
 			@Override
 			public void onNext(RequestData value) {
 				// TODO Auto-generated method stub
-				System.out.println("请求参数：" + value.getText());
-				responseObserver.onNext(ResponseData.newBuilder().setText(value.getText() + "，欢迎你的加入").build());
+				System.out.println("twoWayStreamFun onNext" + value.getText());
+				responseObserver.onNext(ResponseData.newBuilder().setText(value.getText() + "_twoside").build());
 			}
 
 			@Override
